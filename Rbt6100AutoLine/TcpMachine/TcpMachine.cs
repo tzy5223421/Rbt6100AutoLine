@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Rbt6100AutoLine.TcpMachine
 {
-    public delegate void ReciveSocketData(EndPoint RemoteEndPoint, string data);
+    public delegate void ReciveSocketData(EndPoint RemoteEndPoint, byte[] data);
     public class TcpMachine
     {
 
@@ -33,6 +33,7 @@ namespace Rbt6100AutoLine.TcpMachine
             {
             }
         }
+        bool send = false;
         protected void ReadData(object obj)
         {
             Socket ReadClient = (Socket)obj;
@@ -45,7 +46,7 @@ namespace Rbt6100AutoLine.TcpMachine
                     int length = ReadClient.Receive(result);
                     if (length == 0)
                     {
-                        reciveSocketData(ReadClient.RemoteEndPoint, "客户端关闭");
+                        //  reciveSocketData(ReadClient.RemoteEndPoint, result);
                         for (int i = 0; i < Client.Count; i++)
                         {
                             if (ReadClient.RemoteEndPoint == Client[i].RemoteEndPoint)
@@ -54,11 +55,14 @@ namespace Rbt6100AutoLine.TcpMachine
                             }
                         }
                         ReadClient.Close();
-                        //  Client = null;
-                        //   run = false;
                         break;
                     }
-                    reciveSocketData(ReadClient.RemoteEndPoint, Encoding.UTF8.GetString(result, 0, length));
+                    if (send)
+                    {
+                        Send_Byte(result);
+                        send = false;
+                    }
+                    reciveSocketData(ReadClient.RemoteEndPoint, result);
                 }
                 catch { }
             }
@@ -74,7 +78,7 @@ namespace Rbt6100AutoLine.TcpMachine
                     {
                         Socket sokcet = ServerSocket.Accept();
                         Client.Add(sokcet);
-                        reciveSocketData(sokcet.RemoteEndPoint, "客户端连接");
+                        // reciveSocketData(sokcet.RemoteEndPoint, "客户端连接");
                         ThreadPool.QueueUserWorkItem(new WaitCallback(ReadData), sokcet);
                     }
                 }
@@ -110,6 +114,7 @@ namespace Rbt6100AutoLine.TcpMachine
                     for (int i = 0; i < Client.Count; i++)
                     {
                         Client[i].Send(buffer, 0, buffer.Length, SocketFlags.None);
+                        send = true;
                     }
 
                 }

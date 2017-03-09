@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Rbt6100AutoLine
+namespace TcpMGCS
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Rbt6100AutoLine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RbtAutoMain());
+            Application.Run(new Form1());
         }
     }
 }

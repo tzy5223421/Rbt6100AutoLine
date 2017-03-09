@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <Version></Version>
+  <Publisher></Publisher>
+  <Plc_ConnectIP></Plc_ConnectIP>
+  <Plc_ConnectPort></Plc_ConnectPort>
+  <ServerIP></ServerIP>
+  <ServerPort></ServerPort>
+  <LastTimeLogin></LastTimeLogin>
+  <ProtocolPath></ProtocolPath>
+</config>
