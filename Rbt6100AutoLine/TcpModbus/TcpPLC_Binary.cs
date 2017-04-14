@@ -39,10 +39,10 @@ namespace Rbt6100AutoLine.Plc
         /// <summary>
         /// 读取PLC数据
         /// </summary>
-        /// <param name="command"></param>
-        /// <param name="address"></param>
-        /// <param name="size"></param>
-        /// <param name="buf"></param>
+        /// <param name="command" 指令></param>
+        /// <param name="address" 地址></param>
+        /// <param name="size"    大小></param>
+        /// <param name="buf"     缓存区></param>
         /// <returns></returns>
         public int DeviceRead(int command, int address, int size, byte[] buf)
         {

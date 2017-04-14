@@ -9,70 +9,68 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rbt6100AutoLine.Plc;
 using Rbt6100AutoLine.Log;
+using Rbt6100AutoLine.Views;
 
 namespace Rbt6100AutoLine
 {
     public partial class RbtAutoMain : Form
     {
-        TcpPLC_Binary plc;
         public RbtAutoMain()
         {
             InitializeComponent();
-            LoadConfig();
-            plc = new TcpPLC_Binary(Settings.Instance.Plc_ConnectIP, Convert.ToInt16(Settings.Instance.Plc_ConnectPort));
-            backgroundWorker1.RunWorkerAsync(); toolStripStatusLabel1.Text = null;
-            this.Text = this.Text + Settings.Instance.Version;
-            Settings.Instance.Version = Settings.VersionString;
-            Settings.Instance.Save();
         }
-        public void LoadConfig()
+
+        /// <summary>
+        /// 界面UI更新
+        /// </summary>
+        /// <param name="UIID"></param>
+        /// <param name="obj"></param>
+        private void Monitor1_updataui(int UIID, object obj)
         {
-            try
+            // throw new NotImplementedException();
+            string str = obj as string;
+            if (UIID == 0)
             {
-                Settings.Instance.Load();
+                this.Invoke(new Action(() => { this.ipaddress.Text = str; }));
             }
-            catch (Exception ex)
+            if (UIID == 1)
             {
-                Loger.Debug(ex.Data.ToString());
-                // throw;
+                this.Invoke(new Action(() => { this.port.Text = str; }));
             }
-        }
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (true)
+            if (UIID == 2)
             {
-                byte[] buf = new byte[256];
-                if (plc.DeviceRead(plc.Bit_ReadCommand, plc.X_address, 2, buf) == 0)
-                {
-                    if (buf[2] == 0x10)
-                    {
-                        panel1.BackgroundImage = Rbt6100AutoLine.Properties.Resources.green_Light;
-                    }
-                    else
-                    {
-                        panel1.BackgroundImage = Rbt6100AutoLine.Properties.Resources.red_Light;
-                    }
-                }
-                else
-                {
-                    //toolStrip1.Invoke(new Action(() => { this.toolStripStatusLabel1.Text = plc.ErrorMessage; }));
-                    UpdataStatueLabel(plc.ErrorMessage);
-                    Loger.Info(string.Format("当前时间{0}", DateTime.Now.ToString()) + plc.ErrorMessage);
-                    //  Loger.Error(plc.ErrorCode.ToString() + plc.ErrorMessage);
-                }
-                System.Threading.Thread.Sleep(30);
+                this.Invoke(new Action(() => { this.autolineStatue.Text = str; }));
             }
         }
 
-        public void UpdataStatueLabel(string str)
-        {
-            toolStrip1.Invoke(new Action(() => { this.toolStripStatusLabel1.Text = str; }));
-            //Loger.Error();
-        }
         private void tsr_btn_config_Click(object sender, EventArgs e)
         {
             RbtSetting rbtsetting = new RbtSetting();
             rbtsetting.ShowDialog();
+        }
+
+        private void tsr_btn_check_Click(object sender, EventArgs e)
+        {
+            //    Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            //    database.InsertData("AutoLineStatue", "0", "100", "1", "1");
+        }
+
+        private void RbtAutoMain_Load(object sender, EventArgs e)
+        {
+            monitor1.updataui += Monitor1_updataui;
+            monitor1.InitMonitor();
+        }
+
+        private void tsr_btn_disconnect_Click(object sender, EventArgs e)
+        {
+            //Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            //database.DeleteDate();
+        }
+
+        private void tsr_btn_connect_Click(object sender, EventArgs e)
+        {
+            //Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            //database.UpDate("AutoLineStatue", "下料状况", "0", "100");
         }
     }
 }

@@ -104,18 +104,17 @@
     <Compile Include="Logs\Loger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RbtCheckFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RbtCheckFrm.Designer.cs">
+      <DependentUpon>RbtCheckFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RbtSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RbtSetting.Designer.cs">
       <DependentUpon>RbtSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="Controls\VideoControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\VideoControl.Designer.cs">
-      <DependentUpon>VideoControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="RbtAutoMain.resx">
       <DependentUpon>RbtAutoMain.cs</DependentUpon>
@@ -130,11 +129,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RbtCheckFrm.resx">
+      <DependentUpon>RbtCheckFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RbtSetting.resx">
       <DependentUpon>RbtSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\VideoControl.resx">
-      <DependentUpon>VideoControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -158,6 +157,10 @@
     <None Include="Resources\red_Light.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controls\Controls.csproj">
+      <Project>{bb616e20-52f1-4ee3-9833-1c5a491546a7}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TcpMachine\TcpMachine.csproj">
       <Project>{e2b973a8-b1db-439a-82e9-cfd96d92bd65}</Project>
       <Name>TcpMachine</Name>
@@ -172,6 +175,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\背景1.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TcpMGCS.Properties {
+namespace Rbt6100AutoLine.Controls.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TcpMGCS.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TcpMGCS.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rbt6100AutoLine.Controls.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,6 +76,16 @@ namespace TcpMGCS.Properties {
         internal static System.Drawing.Bitmap red_Light {
             get {
                 object obj = ResourceManager.GetObject("red_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 背景1 {
+            get {
+                object obj = ResourceManager.GetObject("背景1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

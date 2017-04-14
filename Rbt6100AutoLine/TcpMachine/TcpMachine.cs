@@ -7,8 +7,8 @@ using System.Threading;
 
 namespace Rbt6100AutoLine.TcpMachine
 {
-    public delegate void ReciveSocketData(EndPoint RemoteEndPoint, byte[] data);
-    public class TcpMachine
+    public delegate void ReciveSocketData(Socket Client, string strData);
+    public class TcpMachine_Server
     {
 
         private Socket ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -16,9 +16,11 @@ namespace Rbt6100AutoLine.TcpMachine
         private Thread ServerThread;
         public List<Socket> Client = new List<Socket>();
         private byte[] MsgBuffer = new byte[1024];
-        public TcpMachine()
+
+        public TcpMachine_Server()
         {
         }
+
         public void StartListen(int port)
         {
             try
@@ -31,9 +33,10 @@ namespace Rbt6100AutoLine.TcpMachine
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
-        bool send = false;
+
         protected void ReadData(object obj)
         {
             Socket ReadClient = (Socket)obj;
@@ -42,6 +45,7 @@ namespace Rbt6100AutoLine.TcpMachine
             {
                 try
                 {
+                    Thread.Sleep(50);
                     byte[] result = new byte[1024];
                     int length = ReadClient.Receive(result);
                     if (length == 0)
@@ -51,26 +55,30 @@ namespace Rbt6100AutoLine.TcpMachine
                         {
                             if (ReadClient.RemoteEndPoint == Client[i].RemoteEndPoint)
                             {
+                                reciveSocketData(ReadClient, "DisConnect");
                                 Client.Remove(Client[i]);
                             }
                         }
                         ReadClient.Close();
                         break;
                     }
-                    if (send)
-                    {
-                        Send_Byte(result);
-                        send = false;
-                    }
-                    reciveSocketData(ReadClient.RemoteEndPoint, result);
+                    //string str = System.Text.Encoding.Default.GetString(result);
+                    //if (send)
+                    //{
+                    //    Send_Byte(result);
+                    //    send = false;
+                    //}
+                    reciveSocketData(ReadClient, Encoding.Default.GetString(result, 0, length));
                 }
                 catch { }
             }
         }
+
         protected void ReciveAccept()
         {
             while (true)
             {
+                Thread.Sleep(50);
                 try
                 {
                     ServerSocket.Listen(10);
@@ -78,15 +86,16 @@ namespace Rbt6100AutoLine.TcpMachine
                     {
                         Socket sokcet = ServerSocket.Accept();
                         Client.Add(sokcet);
-                        // reciveSocketData(sokcet.RemoteEndPoint, "客户端连接");
                         ThreadPool.QueueUserWorkItem(new WaitCallback(ReadData), sokcet);
                     }
                 }
                 catch (SocketException sex)
                 {
+                    Console.WriteLine(sex.Message);
                 }
             }
         }
+
         public void SendAll_Str(string str)
         {
             byte[] buffer = Encoding.Default.GetBytes(str);
@@ -105,6 +114,7 @@ namespace Rbt6100AutoLine.TcpMachine
             }
             catch { }
         }
+
         public void Send_Byte(byte[] buffer)
         {
             try
@@ -114,13 +124,13 @@ namespace Rbt6100AutoLine.TcpMachine
                     for (int i = 0; i < Client.Count; i++)
                     {
                         Client[i].Send(buffer, 0, buffer.Length, SocketFlags.None);
-                        send = true;
                     }
 
                 }
             }
             catch { }
         }
+
         public void Send(Socket client, string str)
         {
             byte[] buffer = Encoding.Default.GetBytes(str);
@@ -130,6 +140,7 @@ namespace Rbt6100AutoLine.TcpMachine
                 catch { }
             }
         }
+
         public void Close()
         {
             try

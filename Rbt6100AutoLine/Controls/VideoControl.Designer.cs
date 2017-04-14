@@ -1,4 +1,4 @@
-﻿namespace Rbt6100AutoLine
+﻿namespace  Rbt6100AutoLine.Controls
 {
     partial class VideoControl
     {
@@ -34,14 +34,15 @@
             // 
             // hWindowControl1
             // 
-            this.hWindowControl1.BackColor = System.Drawing.Color.White;
-            this.hWindowControl1.BorderColor = System.Drawing.Color.White;
+            this.hWindowControl1.BackColor = System.Drawing.Color.Black;
+            this.hWindowControl1.BorderColor = System.Drawing.Color.Black;
+            this.hWindowControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hWindowControl1.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
-            this.hWindowControl1.Location = new System.Drawing.Point(3, 3);
+            this.hWindowControl1.Location = new System.Drawing.Point(0, 0);
             this.hWindowControl1.Name = "hWindowControl1";
-            this.hWindowControl1.Size = new System.Drawing.Size(599, 472);
+            this.hWindowControl1.Size = new System.Drawing.Size(648, 503);
             this.hWindowControl1.TabIndex = 0;
-            this.hWindowControl1.WindowSize = new System.Drawing.Size(599, 472);
+            this.hWindowControl1.WindowSize = new System.Drawing.Size(648, 503);
             // 
             // halconBkg
             // 
@@ -55,7 +56,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.hWindowControl1);
             this.Name = "VideoControl";
-            this.Size = new System.Drawing.Size(605, 478);
+            this.Size = new System.Drawing.Size(648, 503);
             this.ResumeLayout(false);
 
         }

@@ -31,15 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RbtAutoMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ipaddress = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.port = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.autolineStatue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsr_btn_connect = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_disconnect = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_check = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_config = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_exit = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.monitor1 = new Rbt6100AutoLine.Views.Monitor();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,18 +52,58 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
+            this.ipaddress,
+            this.toolStripStatusLabel3,
+            this.port,
+            this.toolStripStatusLabel5,
+            this.autolineStatue,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 663);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 641);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1055, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1108, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(79, 17);
+            this.toolStripStatusLabel1.Text = "本机IP地址：";
+            // 
+            // ipaddress
+            // 
+            this.ipaddress.Name = "ipaddress";
+            this.ipaddress.Size = new System.Drawing.Size(59, 17);
+            this.ipaddress.Text = "127.0.0.1";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(104, 17);
+            this.toolStripStatusLabel3.Text = "服务器监听端口：";
+            // 
+            // port
+            // 
+            this.port.Name = "port";
+            this.port.Size = new System.Drawing.Size(36, 17);
+            this.port.Text = "5000";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusLabel5.Text = "流水线状态：";
+            // 
+            // autolineStatue
+            // 
+            this.autolineStatue.Name = "autolineStatue";
+            this.autolineStatue.Size = new System.Drawing.Size(32, 17);
+            this.autolineStatue.Text = "待机";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(120, 16);
             // 
             // toolStrip1
             // 
@@ -71,7 +115,7 @@
             this.tsr_btn_exit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1055, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1108, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -83,6 +127,7 @@
             this.tsr_btn_connect.Name = "tsr_btn_connect";
             this.tsr_btn_connect.Size = new System.Drawing.Size(36, 22);
             this.tsr_btn_connect.Text = "连接";
+            this.tsr_btn_connect.Click += new System.EventHandler(this.tsr_btn_connect_Click);
             // 
             // tsr_btn_disconnect
             // 
@@ -92,6 +137,7 @@
             this.tsr_btn_disconnect.Name = "tsr_btn_disconnect";
             this.tsr_btn_disconnect.Size = new System.Drawing.Size(36, 22);
             this.tsr_btn_disconnect.Text = "断开";
+            this.tsr_btn_disconnect.Click += new System.EventHandler(this.tsr_btn_disconnect_Click);
             // 
             // tsr_btn_check
             // 
@@ -101,6 +147,7 @@
             this.tsr_btn_check.Name = "tsr_btn_check";
             this.tsr_btn_check.Size = new System.Drawing.Size(36, 22);
             this.tsr_btn_check.Text = "检测";
+            this.tsr_btn_check.Click += new System.EventHandler(this.tsr_btn_check_Click);
             // 
             // tsr_btn_config
             // 
@@ -121,34 +168,27 @@
             this.tsr_btn_exit.Size = new System.Drawing.Size(36, 22);
             this.tsr_btn_exit.Text = "退出";
             // 
-            // panel1
+            // monitor1
             // 
-            this.panel1.BackgroundImage = global::Rbt6100AutoLine.Properties.Resources.red_Light;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(307, 128);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 220);
-            this.panel1.TabIndex = 3;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(120, 16);
+            this.monitor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monitor1.Location = new System.Drawing.Point(0, 25);
+            this.monitor1.Name = "monitor1";
+            this.monitor1.Size = new System.Drawing.Size(1108, 616);
+            this.monitor1.TabIndex = 3;
             // 
             // RbtAutoMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 685);
-            this.Controls.Add(this.panel1);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1010, 580);
+            this.ClientSize = new System.Drawing.Size(1108, 663);
+            this.Controls.Add(this.monitor1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "RbtAutoMain";
             this.Text = "Rbt6100AutoLine";
+            this.Load += new System.EventHandler(this.RbtAutoMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -167,10 +207,14 @@
         private System.Windows.Forms.ToolStripButton tsr_btn_check;
         private System.Windows.Forms.ToolStripButton tsr_btn_config;
         private System.Windows.Forms.ToolStripButton tsr_btn_exit;
-        private System.Windows.Forms.Panel panel1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private Views.Monitor monitor1;
+        private System.Windows.Forms.ToolStripStatusLabel ipaddress;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel port;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private System.Windows.Forms.ToolStripStatusLabel autolineStatue;
     }
 }
 

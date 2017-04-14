@@ -27,9 +27,11 @@ namespace Rbt6100AutoLine
                 return _instance;
             }
         }
+
         public Settings() { }
 
         public static Dictionary<string, string> config = new Dictionary<string, string>();
+
         const string FileName = "config.xml";
 
         public string this[string key]
@@ -42,6 +44,7 @@ namespace Rbt6100AutoLine
             }
             set { config[key] = value; }
         }
+
         public IEnumerable<string> Keys
         {
             // the "ToArray" makes this safe for someone to add items while enumerating.
@@ -67,6 +70,7 @@ namespace Rbt6100AutoLine
             }
             set { this["Version"] = value; }
         }
+
         public string Publisher
         {
             get
@@ -76,6 +80,7 @@ namespace Rbt6100AutoLine
             }
             set { this["Publisher"] = value; }
         }
+
         public string Plc_ConnectIP
         {
             get
@@ -89,6 +94,7 @@ namespace Rbt6100AutoLine
             }
             set { this["Plc_ConnectIP"] = value; }
         }
+
         public string Plc_ConnectPort
         {
             get
@@ -102,6 +108,7 @@ namespace Rbt6100AutoLine
             }
             set { this["Plc_ConnectPort"] = value; }
         }
+
         public string ServerIP
         {
             get
@@ -115,6 +122,7 @@ namespace Rbt6100AutoLine
             }
             set { this["ServerIP"] = value; }
         }
+
         public string ServerPort
         {
             get
@@ -128,11 +136,13 @@ namespace Rbt6100AutoLine
             }
             set { this["ServerPort"] = value; }
         }
+
         public string LastTimeLogin
         {
             get { return this["LastTimeLogin"]; }
             set { this["LastTimeLogin"] = value; }
         }
+
         public string ProtocolPath
         {
             get
@@ -159,6 +169,7 @@ namespace Rbt6100AutoLine
             return Application.StartupPath + Path.DirectorySeparatorChar;
             // return path;
         }
+
         /// <summary>
         /// Install directory path
         /// </summary>
@@ -167,6 +178,11 @@ namespace Rbt6100AutoLine
         {
             return Application.StartupPath + Path.DirectorySeparatorChar;
         }
+
+        /// <summary>
+        /// 获取配置文件全路径 
+        /// </summary>
+        /// <returns></returns>
         static string GetConfigFullPath()
         {
             // old path details
@@ -175,6 +191,7 @@ namespace Rbt6100AutoLine
             {
                 Directory.CreateDirectory(directory);
             }
+
             var path = Path.Combine(directory, FileName);
 
             // get new path details
@@ -208,6 +225,9 @@ namespace Rbt6100AutoLine
             return newpath;
         }
 
+        /// <summary>
+        /// 加载XML文件
+        /// </summary>
         public void Load()
         {
             using (XmlTextReader xmlreader = new XmlTextReader(GetConfigFullPath()))
@@ -239,6 +259,10 @@ namespace Rbt6100AutoLine
                 }
             }
         }
+
+        /// <summary>
+        /// 保存配置文件
+        /// </summary>
         public void Save()
         {
             string filename = GetConfigFullPath();
