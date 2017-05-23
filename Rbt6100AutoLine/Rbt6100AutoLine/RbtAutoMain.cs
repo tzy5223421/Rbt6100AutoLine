@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rbt6100AutoLine.Plc;
 using Rbt6100AutoLine.Log;
-using Rbt6100AutoLine.Controls;
+using Rbt6100AutoLine.Views;
 
 namespace Rbt6100AutoLine
 {
@@ -18,33 +18,6 @@ namespace Rbt6100AutoLine
         public RbtAutoMain()
         {
             InitializeComponent();
-            //System.Diagnostics.Process[] process = System.Diagnostics.Process.GetProcesses();
-            //string AppPath = Application.StartupPath;
-
-            //string HALCONARCH = System.Environment.GetEnvironmentVariable("HALCONARCH");
-            //string HALCONROOT = System.Environment.GetEnvironmentVariable("HALCONROOT");
-            //string sysPath = System.Environment.GetEnvironmentVariable("Path");
-
-            //if (HALCONROOT == null)
-            //{
-            //    //      System.Environment.SetEnvironmentVariable("HALCONROOT", AppPath + "\\MatchServer", EnvironmentVariableTarget.Machine);
-            //}
-            //if (HALCONARCH == null)
-            //{
-            //    //     System.Environment.SetEnvironmentVariable("HALCONARCH", "x64sse2-win32", EnvironmentVariableTarget.Machine);
-            //}
-            //if (HALCONARCH == null || HALCONROOT == null)
-            //{
-            //    if (sysPath.Contains("%HALCONROOT%") || sysPath.Contains("%HALCONARCH%"))
-            //    {
-
-            //    }
-            //    else
-            //    {
-            //        System.Environment.SetEnvironmentVariable("Path", sysPath + ";%HALCONROOT%\\bin\\%HALCONARCH%", EnvironmentVariableTarget.Machine);
-            //    }
-
-            //}
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ using System.Threading;
 using Rbt6100AutoLine.Plc;
 using Rbt6100AutoLine.TcpMachine;
 using System.Net.Sockets;
-namespace Rbt6100AutoLine.Controls
+namespace Rbt6100AutoLine
 {
     public delegate void ReturnThreadInfo(string text);
     public class Rbt6100AutoLineThread
@@ -83,7 +83,7 @@ namespace Rbt6100AutoLine.Controls
                 tcpServer.reciveSocketData += TcpServer_reciveSocketData;
                 //  return;
             }
-            //returnthreadInfo("AutoLine|Statue|ListenStart");
+            returnthreadInfo("AutoLine|Statue|ListenStart");
             if (isFeedingRobot_Connect && isAssemblingRobot_Connect && isBaitingRobot_Connect)
             {
                 if (Command == "Feeding")

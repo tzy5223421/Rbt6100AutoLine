@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Rbt6100AutoLine.Controls
+namespace Rbt6100AutoLine
 {
     public class Settings
     {
-
         static Settings _instance;
         static int Revision = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision;
         static int iBuild = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build;
@@ -58,132 +57,6 @@ namespace Rbt6100AutoLine.Controls
         }
 
         #region 属性
-        public string SensorPlcControl_1
-        {
-            get
-            {
-                string str = this["SensorPlcControl_1"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_1"];
-            }
-            set
-            {
-                this["SensorPlcControl_1"] = value;
-            }
-        }
-
-        public string SensorPlcControl_2
-        {
-            get
-            {
-                string str = this["SensroPlcControl_2"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_2"];
-            }
-            set { this["SensorPlcControl_2"] = value; }
-        }
-
-        public string SensorPlcControl_3
-        {
-            get
-            {
-                string str = this["SensorPlcControl_3"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_3"];
-            }
-            set { this["SensorPlcControl_3"] = value; }
-        }
-        public string SensorPlcControl_4
-        {
-            get
-            {
-                string str = this["SensorPlcControl_4"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_4"];
-            }
-            set { this["SensorPlcControl_4"] = value; }
-        }
-        public string SensorPlcControl_register_1
-        {
-            get
-            {
-                string str = this["SensorPlcControl_register_1"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_register_1"];
-            }
-            set { this["SensorPlcControl_register_1"] = value; }
-        }
-        public string SensorPlcControl_register_2
-        {
-            get
-            {
-                string str = this["SensorPlcControl_register_2"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_register_2"];
-            }
-            set { this["SensorPlcControl_register_2"] = value; }
-        }
-        public string SensorPlcControl_register_3
-        {
-            get
-            {
-                string str = this["SensorPlcControl_register_3"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_register_3"];
-            }
-            set { this["SensorPlcControl_register_3"] = value; }
-        }
-        public string SensorPlcControl_register_4
-        {
-            get
-            {
-                string str = this["SensorPlcControl_register_4"];
-                if (str == "")
-                {
-
-                }
-                return this["SensorPlcControl_register_4"];
-            }
-            set { this["SensorPlcControl_register_4"] = value; }
-        }
-        public string DatasourceConnectString
-        {
-            get
-            {
-                string str = this["DatasourceConnectString"];
-                if (str == "")
-                {
-                    this["DatasourceConnectString"] = @"Data Source = TZY-PC; Initial Catalog = Rbt6100AutoLine; User ID = Rbt6100Admin;Password=Rbt6100Admin";
-                }
-                return this["DatasourceConnectString"];
-            }
-            set
-            {
-                this["DatasourceConnectString"] = value;
-            }
-        }
-
         public string Version
         {
             get

@@ -7,19 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HalconDotNet;
 //using Rbt6100AutoLine.Log;
 
-namespace Rbt6100AutoLine.Controls
+namespace Rbt6100AutoLine.Views
 {
     public delegate void UpdataUIEvent(int UIID, string str);
     public partial class Monitor : UserControl
     {
         public event UpdataUIEvent updataui;
-        private Rbt6100AutoLineThread RbtThread;
-        private RobotControlThread RcThread;
-        private string ConnectString = null;
-        Rbt6100AutoLine.Controls.CameraSetting Camerasetting;
+        Rbt6100AutoLineThread RbtThread;
+        RobotControlThread RcThread;
         public Monitor()
         {
             InitializeComponent();
@@ -29,13 +26,11 @@ namespace Rbt6100AutoLine.Controls
         {
 
         }
-
         public void InitMonitor()
         {
             LoadConfig();
             this.Text = this.Text + Settings.Instance.Version;
             Settings.Instance.Version = Settings.VersionString;
-            ConnectString = Settings.Instance.DatasourceConnectString;
             Settings.Instance.Save();
             RbtThread = new Rbt6100AutoLineThread();
             RbtThread.StartThread("ListenRobot");
@@ -44,17 +39,7 @@ namespace Rbt6100AutoLine.Controls
             RbtThread.returnthreadInfo += RbtThread_returnthreadInfo;
             updataui(0, Settings.Instance.ServerIP);
             updataui(1, Settings.Instance.ServerPort);
-            Camerasetting = new Rbt6100AutoLine.Controls.CameraSetting();
-            Camerasetting.camerErrorMessage += Camerasetting_camerErrorMessage;
-
         }
-
-        private void Camerasetting_camerErrorMessage(string text)
-        {
-            //throw new NotImplementedException();
-            MessageBox.Show(text);
-        }
-
         private void RbtThread_returnthreadInfo(string text)
         {
             //throw new NotImplementedException();
@@ -185,15 +170,14 @@ namespace Rbt6100AutoLine.Controls
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //Loger.Debug(ex.Data.ToString());
+                // throw;
             }
         }
-
         public void StartAutoLine()
         {
             RbtThread.StartThread("Feeding");
         }
-
         public void StopAutoLine()
         {
             RbtThread.StopThread();
@@ -203,54 +187,27 @@ namespace Rbt6100AutoLine.Controls
         {
             robotInfo1.ClearText();
         }
-        int i = 1;
+        int i = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-          //  videoControl1.GrabImageAsync();
+            Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            database.CreateTable();
+            //    this.dataGridView1.DataSource = dt;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase(ConnectString);
-            //database.CreateTable("测试表格", DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString());
-            //dataGridView1.DataSource = database.ReadTable("测试表格");
-            HTuple hv_acqCam = null;
-            Camerasetting.OpenCamera("000748dcdbab_TheImagingSourceEuropeGmbH_DFK33G4", 0, 0, 0, "default", out hv_acqCam);
+            Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            database.InsertData("AutoLineStatue", i.ToString(), "100", "1", "1");
+            i++;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //int id = i - 1;
-            //Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase(ConnectString);
-            //database.DeleteTable("测试表格");
-            //dataGridView1.DataSource = database.ReadTable("测试表格");
-            // Rbt6100AutoLine.Controls.CameraSetting Camerasetting = new Rbt6100AutoLine.Controls.CameraSetting();
-            // HTuple hv_acqCam = null;
-            // if
-            //(Camerasetting.OpenCamera("000748dcdbab_TheImagingSourceEuropeGmbH_DFK33G4", out hv_acqCam))
-            // {
-            //     Camerasetting.SetGevCurrentIPAddress(hv_acqCam, "192.168.2.123");
-            //     Camerasetting.CloseCamera(hv_acqCam);
-            // }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Rbt6100AutoLine.Controls.CamSetFrm cf = new Rbt6100AutoLine.Controls.CamSetFrm();
-            cf.ShowDialog();
-            //this.videoControl1.GrabImageAsync();
-            // this.videoControl1.GrabImage();
-            // string[] name = this.videoControl1.GetCameraName();
-            //MatchCi
-            // Rbt6100AutoLine.Controls.MatchCircle.GetCameraName_IP("2");
-
-            //      HTuple hv_acqCam = null;
-            ////      Rbt6100AutoLine.Controls.CameraSetting.GetCameraName_GigEVision();
-            //      if (Camerasetting.OpenCamera("000748dcdbab_TheImagingSourceEuropeGmbH_DFK33G4", out hv_acqCam))
-            //      {
-            //          Camerasetting.GetGtlCurrentIPAddress(hv_acqCam);
-            //          Camerasetting.CloseCamera(hv_acqCam);
-            //      }
+            int id = i - 1;
+            Rbt6100AutoLine.Controls.DataBase database = new Rbt6100AutoLine.Controls.DataBase("TZY-PC", "Rbt6100Admin", "Rbt6100Admin");
+            database.UpDate("AutoLineStatue", "下料状况", id.ToString(), "100");
         }
     }
 }

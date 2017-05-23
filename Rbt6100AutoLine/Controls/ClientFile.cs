@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 
-namespace Rbt6100AutoLine.Controls
+namespace Rbt6100AutoLine
 {
     public class ClientFile
     {

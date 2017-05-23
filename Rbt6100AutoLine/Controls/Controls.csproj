@@ -11,7 +11,6 @@
     <AssemblyName>Rbt6100AutoLine.Controls</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,17 +28,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="halcondotnet, Version=13.0.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\MVTec\HALCON-13.0\bin\dotnet35\halcondotnet.dll</HintPath>
+    <Reference Include="halcondotnetxl">
+      <HintPath>E:\Program Files\MVTec\HALCON-12.0\bin\dotnet35\halcondotnetxl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -52,57 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="控件\BeltCheck.cs">
+    <Compile Include="BeltCheck.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\BeltCheck.Designer.cs">
+    <Compile Include="BeltCheck.Designer.cs">
       <DependentUpon>BeltCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="摄像头\CameraSetting.cs" />
-    <Compile Include="摄像头\Camera_Paramter.cs" />
-    <Compile Include="摄像头\CamSetFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="摄像头\CamSetFrm.Designer.cs">
-      <DependentUpon>CamSetFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="摄像头\MatchCircle.cs" />
-    <Compile Include="摄像头\VideoControl.cs">
+    <Compile Include="ClientFile.cs" />
+    <Compile Include="ConnectStatue.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="摄像头\VideoControl.Designer.cs">
-      <DependentUpon>VideoControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="通用类\ClientFile.cs" />
-    <Compile Include="控件\ConnectStatue.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="控件\ConnectStatue.Designer.cs">
+    <Compile Include="ConnectStatue.Designer.cs">
       <DependentUpon>ConnectStatue.cs</DependentUpon>
     </Compile>
-    <Compile Include="通用类\DataBase.cs" />
-    <Compile Include="控件\Indicator_light.cs">
+    <Compile Include="DataBase.cs" />
+    <Compile Include="Indicator_light.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\Indicator_light.Designer.cs">
+    <Compile Include="Indicator_light.Designer.cs">
       <DependentUpon>Indicator_light.cs</DependentUpon>
     </Compile>
-    <Compile Include="控件\MachineCheck.cs">
+    <Compile Include="MachineCheck.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\MachineCheck.Designer.cs">
+    <Compile Include="MachineCheck.Designer.cs">
       <DependentUpon>MachineCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="控件\Monitor.cs">
+    <Compile Include="Monitor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\Monitor.Designer.cs">
+    <Compile Include="Monitor.Designer.cs">
       <DependentUpon>Monitor.cs</DependentUpon>
     </Compile>
-    <Compile Include="控件\ProcessControl.cs">
+    <Compile Include="ProcessControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\ProcessControl.Designer.cs">
+    <Compile Include="ProcessControl.Designer.cs">
       <DependentUpon>ProcessControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,78 +90,71 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="通用类\Rbt6100AutoLineThread.cs" />
-    <Compile Include="通用类\RobotControlThread.cs" />
-    <Compile Include="控件\RobotInfo.cs">
+    <Compile Include="Rbt6100AutoLineThread.cs" />
+    <Compile Include="RobotControlThread.cs" />
+    <Compile Include="RobotInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\RobotInfo.Designer.cs">
+    <Compile Include="RobotInfo.Designer.cs">
       <DependentUpon>RobotInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="控件\SensorCheck.cs">
+    <Compile Include="SensorCheck.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\SensorCheck.Designer.cs">
+    <Compile Include="SensorCheck.Designer.cs">
       <DependentUpon>SensorCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="通用类\Settings.cs" />
-    <Compile Include="控件\SignalPoint.cs">
+    <Compile Include="Settings.cs" />
+    <Compile Include="SignalPoint.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="控件\SignalPoint.Designer.cs">
+    <Compile Include="SignalPoint.Designer.cs">
       <DependentUpon>SignalPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VideoControl.Designer.cs">
+      <DependentUpon>VideoControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="控件\BeltCheck.resx">
+    <EmbeddedResource Include="BeltCheck.resx">
       <DependentUpon>BeltCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="摄像头\CamSetFrm.resx">
-      <DependentUpon>CamSetFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="摄像头\VideoControl.resx">
-      <DependentUpon>VideoControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="控件\ConnectStatue.resx">
+    <EmbeddedResource Include="ConnectStatue.resx">
       <DependentUpon>ConnectStatue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\Indicator_light.resx">
+    <EmbeddedResource Include="Indicator_light.resx">
       <DependentUpon>Indicator_light.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\MachineCheck.resx">
+    <EmbeddedResource Include="MachineCheck.resx">
       <DependentUpon>MachineCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\Monitor.resx">
+    <EmbeddedResource Include="Monitor.resx">
       <DependentUpon>Monitor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\ProcessControl.resx">
+    <EmbeddedResource Include="ProcessControl.resx">
       <DependentUpon>ProcessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\RobotInfo.resx">
+    <EmbeddedResource Include="RobotInfo.resx">
       <DependentUpon>RobotInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\SensorCheck.resx">
+    <EmbeddedResource Include="SensorCheck.resx">
       <DependentUpon>SensorCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控件\SignalPoint.resx">
+    <EmbeddedResource Include="SignalPoint.resx">
       <DependentUpon>SignalPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoControl.resx">
+      <DependentUpon>VideoControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Resources\green_Light.png" />
   </ItemGroup>
   <ItemGroup>
