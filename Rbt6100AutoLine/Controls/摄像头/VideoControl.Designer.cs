@@ -1,4 +1,4 @@
-﻿namespace  Rbt6100AutoLine.Controls
+﻿namespace Rbt6100AutoLine.Controls
 {
     partial class VideoControl
     {
@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hWindowControl1 = new HalconDotNet.HWindowControl();
             this.halconBkg = new System.ComponentModel.BackgroundWorker();
+            this.hWindowControl1 = new HalconDotNet.HWindowControl();
             this.SuspendLayout();
+            // 
+            // halconBkg
+            // 
+            this.halconBkg.WorkerReportsProgress = true;
+            this.halconBkg.WorkerSupportsCancellation = true;
+            this.halconBkg.DoWork += new System.ComponentModel.DoWorkEventHandler(this.halconBkg_DoWork);
             // 
             // hWindowControl1
             // 
@@ -40,30 +46,24 @@
             this.hWindowControl1.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
             this.hWindowControl1.Location = new System.Drawing.Point(0, 0);
             this.hWindowControl1.Name = "hWindowControl1";
-            this.hWindowControl1.Size = new System.Drawing.Size(648, 503);
+            this.hWindowControl1.Size = new System.Drawing.Size(639, 504);
             this.hWindowControl1.TabIndex = 0;
-            this.hWindowControl1.WindowSize = new System.Drawing.Size(648, 503);
-            // 
-            // halconBkg
-            // 
-            this.halconBkg.WorkerReportsProgress = true;
-            this.halconBkg.WorkerSupportsCancellation = true;
-            this.halconBkg.DoWork += new System.ComponentModel.DoWorkEventHandler(this.halconBkg_DoWork);
+            this.hWindowControl1.WindowSize = new System.Drawing.Size(639, 504);
             // 
             // VideoControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.hWindowControl1);
             this.Name = "VideoControl";
-            this.Size = new System.Drawing.Size(648, 503);
+            this.Size = new System.Drawing.Size(639, 504);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private HalconDotNet.HWindowControl hWindowControl1;
         private System.ComponentModel.BackgroundWorker halconBkg;
+        private HalconDotNet.HWindowControl hWindowControl1;
     }
 }

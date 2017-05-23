@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
-  <Version></Version>
+  <Version></Version> 
   <Publisher></Publisher>
   <Plc_ConnectIP></Plc_ConnectIP>
   <Plc_ConnectPort></Plc_ConnectPort>
@@ -8,4 +8,13 @@
   <ServerPort></ServerPort>
   <LastTimeLogin></LastTimeLogin>
   <ProtocolPath></ProtocolPath>
+  <DatasourceConnectString></DatasourceConnectString>
+  <PlcSensorControl_1></PlcSensorControl_1>
+  <PlcSensorControl_2></PlcSensorControl_2>
+  <PlcSensorControl_3></PlcSensorControl_3>
+  <PlcSensorControl_4></PlcSensorControl_4>
+  <SensorPlcControl_register_1></SensorPlcControl_register_1>
+  <SensorPlcControl_register_2></SensorPlcControl_register_2>
+  <SensorPlcControl_register_3></SensorPlcControl_register_3>
+  <SensorPlcControl_register_4></SensorPlcControl_register_4>
 </config>

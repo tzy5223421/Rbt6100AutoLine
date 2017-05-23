@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rbt6100AutoLine.Log;
-
+using Rbt6100AutoLine.Controls;
 namespace Rbt6100AutoLine
 {
     public partial class RbtSetting : Form
@@ -17,11 +17,11 @@ namespace Rbt6100AutoLine
         {
             InitializeComponent();
             LoadConfig();
-            this.Text = "流水线控制设置";
-            this.txt_plcConnectIP.Text = Settings.Instance.Plc_ConnectIP;
-            this.txt_plcConnectPort.Text = Settings.Instance.Plc_ConnectPort;
-            this.txt_serverIP.Text = Settings.Instance.ServerIP;
-            this.txt_serverPort.Text = Settings.Instance.ServerPort;
+            Text = "流水线控制设置";
+            txt_plcConnectIP.Text = Settings.Instance.Plc_ConnectIP;
+            txt_plcConnectPort.Text = Settings.Instance.Plc_ConnectPort;
+            txt_serverIP.Text = Settings.Instance.ServerIP;
+            txt_serverPort.Text = Settings.Instance.ServerPort;
         }
         public void LoadConfig()
         {
@@ -32,7 +32,7 @@ namespace Rbt6100AutoLine
             catch (Exception ex)
             {
                 Loger.Debug(ex.Data.ToString());
-            }
+            } 
         }
         public void SaveConfig()
         {

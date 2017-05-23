@@ -43,7 +43,7 @@
             this.tsr_btn_check = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_config = new System.Windows.Forms.ToolStripButton();
             this.tsr_btn_exit = new System.Windows.Forms.ToolStripButton();
-            this.monitor1 = new Rbt6100AutoLine.Views.Monitor();
+            this.monitor1 = new Rbt6100AutoLine.Controls.Monitor();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,9 +58,9 @@
             this.toolStripStatusLabel5,
             this.autolineStatue,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 641);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 970);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1108, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1019, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -115,7 +115,7 @@
             this.tsr_btn_exit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1108, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1019, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -173,7 +173,7 @@
             this.monitor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monitor1.Location = new System.Drawing.Point(0, 25);
             this.monitor1.Name = "monitor1";
-            this.monitor1.Size = new System.Drawing.Size(1108, 616);
+            this.monitor1.Size = new System.Drawing.Size(1019, 945);
             this.monitor1.TabIndex = 3;
             // 
             // RbtAutoMain
@@ -182,7 +182,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1010, 580);
-            this.ClientSize = new System.Drawing.Size(1108, 663);
+            this.ClientSize = new System.Drawing.Size(1019, 992);
             this.Controls.Add(this.monitor1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -209,7 +209,7 @@
         private System.Windows.Forms.ToolStripButton tsr_btn_exit;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private Views.Monitor monitor1;
+        private Rbt6100AutoLine.Controls.Monitor monitor1;
         private System.Windows.Forms.ToolStripStatusLabel ipaddress;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel port;

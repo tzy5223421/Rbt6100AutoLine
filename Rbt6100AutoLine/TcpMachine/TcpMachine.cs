@@ -10,13 +10,15 @@ namespace Rbt6100AutoLine.TcpMachine
     public delegate void ReciveSocketData(Socket Client, string strData);
     public class TcpMachine_Server
     {
-
+        #region 变量
         private Socket ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public event ReciveSocketData reciveSocketData;
         private Thread ServerThread;
         public List<Socket> Client = new List<Socket>();
         private byte[] MsgBuffer = new byte[1024];
+        #endregion
 
+        #region 方法
         public TcpMachine_Server()
         {
         }
@@ -125,7 +127,6 @@ namespace Rbt6100AutoLine.TcpMachine
                     {
                         Client[i].Send(buffer, 0, buffer.Length, SocketFlags.None);
                     }
-
                 }
             }
             catch { }
@@ -151,5 +152,7 @@ namespace Rbt6100AutoLine.TcpMachine
             }
             catch { }
         }
+        #endregion
     }
 }
+    

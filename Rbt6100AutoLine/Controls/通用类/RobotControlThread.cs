@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Rbt6100AutoLine.Plc;
 
-namespace Rbt6100AutoLine
+namespace Rbt6100AutoLine.Controls
 {
     public class RobotControlThread
     {

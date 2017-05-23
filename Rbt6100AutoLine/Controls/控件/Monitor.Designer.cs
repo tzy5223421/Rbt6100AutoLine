@@ -1,4 +1,4 @@
-﻿namespace Rbt6100AutoLine.Views
+﻿namespace Rbt6100AutoLine.Controls
 {
     partial class Monitor
     {
@@ -43,6 +43,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.processControl1 = new Rbt6100AutoLine.Controls.ProcessControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.robotInfo1 = new Rbt6100AutoLine.Controls.RobotInfo();
@@ -52,12 +53,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.FeedCam = new System.Windows.Forms.TabPage();
-            this.videoControl1 = new Rbt6100AutoLine.Controls.VideoControl();
             this.AssemCam = new System.Windows.Forms.TabPage();
-            this.videoControl2 = new Rbt6100AutoLine.Controls.VideoControl();
             this.BaitCam = new System.Windows.Forms.TabPage();
+            this.videoControl1 = new Rbt6100AutoLine.Controls.VideoControl();
+            this.videoControl2 = new Rbt6100AutoLine.Controls.VideoControl();
             this.videoControl3 = new Rbt6100AutoLine.Controls.VideoControl();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -66,6 +66,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -82,7 +83,7 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 351);
+            this.panel1.Location = new System.Drawing.Point(0, 555);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 334);
             this.panel1.TabIndex = 0;
@@ -98,8 +99,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.connectStatue1);
             this.groupBox4.Location = new System.Drawing.Point(3, 6);
@@ -128,8 +129,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.button3);
@@ -149,7 +150,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 1;
-            this.button4.Text = "修改数据";
+            this.button4.Text = "设置IP";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -159,8 +160,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 1;
-            this.button3.Text = "删除数据";
+            this.button3.Text = "读取IP";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -227,38 +229,48 @@
             this.tabPage2.Text = "装配信息表";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(810, 267);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(551, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(391, 351);
+            this.panel3.Size = new System.Drawing.Size(391, 555);
             this.panel3.TabIndex = 2;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.robotInfo1);
             this.groupBox1.Location = new System.Drawing.Point(6, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(379, 342);
+            this.groupBox1.Size = new System.Drawing.Size(379, 546);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "日志信息";
             // 
             // robotInfo1
             // 
-            this.robotInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.robotInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.robotInfo1.BackColor = System.Drawing.Color.Transparent;
             this.robotInfo1.ContextMenuStrip = this.contextMenuStrip1;
             this.robotInfo1.Location = new System.Drawing.Point(7, 20);
             this.robotInfo1.Name = "robotInfo1";
-            this.robotInfo1.Size = new System.Drawing.Size(366, 315);
+            this.robotInfo1.Size = new System.Drawing.Size(366, 519);
             this.robotInfo1.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -281,18 +293,18 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(551, 351);
+            this.panel6.Size = new System.Drawing.Size(551, 555);
             this.panel6.TabIndex = 3;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.tabControl2);
             this.groupBox2.Location = new System.Drawing.Point(1, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(549, 342);
+            this.groupBox2.Size = new System.Drawing.Size(549, 546);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "摄像头";
@@ -306,7 +318,7 @@
             this.tabControl2.Location = new System.Drawing.Point(3, 17);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(543, 322);
+            this.tabControl2.Size = new System.Drawing.Size(543, 526);
             this.tabControl2.TabIndex = 0;
             // 
             // FeedCam
@@ -315,18 +327,10 @@
             this.FeedCam.Location = new System.Drawing.Point(4, 22);
             this.FeedCam.Name = "FeedCam";
             this.FeedCam.Padding = new System.Windows.Forms.Padding(3);
-            this.FeedCam.Size = new System.Drawing.Size(535, 296);
+            this.FeedCam.Size = new System.Drawing.Size(535, 500);
             this.FeedCam.TabIndex = 0;
             this.FeedCam.Text = "上料工作站摄像头";
             this.FeedCam.UseVisualStyleBackColor = true;
-            // 
-            // videoControl1
-            // 
-            this.videoControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoControl1.Location = new System.Drawing.Point(3, 3);
-            this.videoControl1.Name = "videoControl1";
-            this.videoControl1.Size = new System.Drawing.Size(529, 290);
-            this.videoControl1.TabIndex = 0;
             // 
             // AssemCam
             // 
@@ -334,18 +338,10 @@
             this.AssemCam.Location = new System.Drawing.Point(4, 22);
             this.AssemCam.Name = "AssemCam";
             this.AssemCam.Padding = new System.Windows.Forms.Padding(3);
-            this.AssemCam.Size = new System.Drawing.Size(535, 296);
+            this.AssemCam.Size = new System.Drawing.Size(535, 500);
             this.AssemCam.TabIndex = 1;
             this.AssemCam.Text = "装配工作站摄像头";
             this.AssemCam.UseVisualStyleBackColor = true;
-            // 
-            // videoControl2
-            // 
-            this.videoControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoControl2.Location = new System.Drawing.Point(3, 3);
-            this.videoControl2.Name = "videoControl2";
-            this.videoControl2.Size = new System.Drawing.Size(529, 290);
-            this.videoControl2.TabIndex = 0;
             // 
             // BaitCam
             // 
@@ -353,29 +349,42 @@
             this.BaitCam.Location = new System.Drawing.Point(4, 22);
             this.BaitCam.Name = "BaitCam";
             this.BaitCam.Padding = new System.Windows.Forms.Padding(3);
-            this.BaitCam.Size = new System.Drawing.Size(535, 296);
+            this.BaitCam.Size = new System.Drawing.Size(535, 500);
             this.BaitCam.TabIndex = 2;
             this.BaitCam.Text = "下料工作站摄像头";
             this.BaitCam.UseVisualStyleBackColor = true;
             // 
+            // videoControl1
+            // 
+            this.videoControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoControl1.GetImage = false;
+            this.videoControl1.IdentifyQRCode = false;
+            this.videoControl1.Location = new System.Drawing.Point(3, 3);
+            this.videoControl1.MatchImage = false;
+            this.videoControl1.Name = "videoControl1";
+            this.videoControl1.TabIndex = 0;
+            // 
+            // videoControl2
+            // 
+            this.videoControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoControl2.GetImage = false;
+            this.videoControl2.IdentifyQRCode = false;
+            this.videoControl2.Location = new System.Drawing.Point(3, 3);
+            this.videoControl2.MatchImage = false;
+            this.videoControl2.Name = "videoControl2";
+            this.videoControl2.Size = new System.Drawing.Size(529, 494);
+            this.videoControl2.TabIndex = 0;
+            // 
             // videoControl3
             // 
             this.videoControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoControl3.GetImage = false;
+            this.videoControl3.IdentifyQRCode = false;
             this.videoControl3.Location = new System.Drawing.Point(3, 3);
+            this.videoControl3.MatchImage = false;
             this.videoControl3.Name = "videoControl3";
-            this.videoControl3.Size = new System.Drawing.Size(529, 290);
+            this.videoControl3.Size = new System.Drawing.Size(529, 494);
             this.videoControl3.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(810, 267);
-            this.dataGridView1.TabIndex = 0;
             // 
             // Monitor
             // 
@@ -385,7 +394,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "Monitor";
-            this.Size = new System.Drawing.Size(942, 685);
+            this.Size = new System.Drawing.Size(942, 889);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -394,6 +403,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -403,7 +413,6 @@
             this.FeedCam.ResumeLayout(false);
             this.AssemCam.ResumeLayout(false);
             this.BaitCam.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,9 +438,6 @@
         private System.Windows.Forms.TabPage FeedCam;
         private System.Windows.Forms.TabPage AssemCam;
         private System.Windows.Forms.TabPage BaitCam;
-        private Controls.VideoControl videoControl3;
-        private Controls.VideoControl videoControl1;
-        private Controls.VideoControl videoControl2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
         private System.Windows.Forms.Button button4;
@@ -439,5 +445,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private VideoControl videoControl1;
+        private VideoControl videoControl2;
+        private VideoControl videoControl3;
     }
 }
